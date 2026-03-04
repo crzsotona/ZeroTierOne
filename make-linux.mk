@@ -475,13 +475,6 @@ central-controller-docker: _buildx FORCE
 central-controller-docker-X64: FORCE
 	docker build --platform linux/amd64 --no-cache -t registry.zerotier.com/zerotier-central/ztcentral-controller:${TIMESTAMP}-amd64 -f ext/central-controller-docker/Dockerfile . --push
 
-central-controller-docker-ARM64: FORCE
-	docker build --platform linux/arm64 --no-cache -t registry.zerotier.com/zerotier-central/ztcentral-controller:${TIMESTAMP}-arm64 -f ext/central-controller-docker/Dockerfile . --push
-
-centralv2-controller-docker: _buildx FORCE
-	docker buildx build --platform linux/amd64,linux/arm64 --no-cache -t us-central1-docker.pkg.dev/zerotier-421eb9/docker-images/ztcentral-controller:$(shell git rev-parse --short HEAD) -f ext/central-controller-docker/Dockerfile --build-arg git_branch=`git name-rev --name-only HEAD` . --push
-	@echo Image: us-central1-docker.pkg.dev/zerotier-421eb9/docker-images/ztcentral-controller:$(shell git rev-parse --short HEAD)
-
 debug:	FORCE
 	make ZT_DEBUG=1 one
 	make ZT_DEBUG=1 selftest
