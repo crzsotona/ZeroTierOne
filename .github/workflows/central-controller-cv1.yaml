@@ -61,7 +61,7 @@ jobs:
 
       - name: Create and push multi-arch manifest
         run: |
-          docker manifest create us-central1-docker.pkg.dev/zerotier-421eb9/docker-images/ztcentral-controller:${{ env.COMMIT_SHORT_SHA }}-${{ steps.branch.outputs.branch_name }} \
-            --amend us-central1-docker.pkg.dev/zerotier-421eb9/docker-images/ztcentral-controller:${{ env.COMMIT_SHORT_SHA }}-${{ steps.branch.outputs.branch_name }}-X64 \
-            --amend us-central1-docker.pkg.dev/zerotier-421eb9/docker-images/ztcentral-controller:${{ env.COMMIT_SHORT_SHA }}-${{ steps.branch.outputs.branch_name }}-ARM64
-          docker manifest push us-central1-docker.pkg.dev/zerotier-421eb9/docker-images/ztcentral-controller:${{ env.COMMIT_SHORT_SHA }}-${{ steps.branch.outputs.branch_name }}
+          docker manifest create registry.zerotier.com/zerotier-central/ztcentral-controller:${{ env.COMMIT_SHORT_SHA }}-${{ steps.branch.outputs.branch_name }} \
+            --amend registry.zerotier.com/zerotier-central/ztcentral-controller:${{ env.COMMIT_SHORT_SHA }}-${{ steps.branch.outputs.branch_name }}-X64 \
+            --amend registry.zerotier.com/zerotier-central/ztcentral-controller:${{ env.COMMIT_SHORT_SHA }}-${{ steps.branch.outputs.branch_name }}-ARM64
+          docker manifest push registry.zerotier.com/zerotier-central/ztcentral-controller:${{ env.COMMIT_SHORT_SHA }}-${{ steps.branch.outputs.branch_name }}
